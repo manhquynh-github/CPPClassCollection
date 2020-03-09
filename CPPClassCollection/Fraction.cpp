@@ -86,12 +86,14 @@ Fraction Fraction::getSimplified()
   }
   int x = GCD(iNumerator, iDenominator);
   if (x != 0) return Fraction(iNumerator / x, iDenominator / x);
+  // TODO Throw error
 }
 
 Fraction Fraction::QuyDong(const Fraction &f) const
 {
   int x = LCM(iDenominator, f.iDenominator);
   if (x != 0) return Fraction(iNumerator * (x / iDenominator), x);
+  // TODO Throw error
 }
 
 Fraction Fraction::Add(const Fraction &f) const

@@ -102,6 +102,7 @@ void SinglePolynomial::AddElement(float fCoefficient, int iExponent)
   fCoefficients[iElementCount] = fCoefficient;
   iExponents[iElementCount] = iExponent;
   iElementCount++;
+  // TODO boundary checking
 }
 
 void SinglePolynomial::Output()

@@ -33,9 +33,6 @@
     <ClCompile Include="mString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MYINT.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SoPhuc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,9 +63,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mString.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MYINT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SoPhuc.h">

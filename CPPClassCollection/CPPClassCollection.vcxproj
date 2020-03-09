@@ -129,7 +129,6 @@
     <ClCompile Include="INTEGER.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="mString.cpp" />
-    <ClCompile Include="MYINT.cpp" />
     <ClCompile Include="SoPhuc.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TimeSpan.cpp" />
@@ -142,7 +141,6 @@
     <ClInclude Include="INTEGER.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="mString.h" />
-    <ClInclude Include="MYINT.h" />
     <ClInclude Include="SoPhuc.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="TimeSpan.h" />

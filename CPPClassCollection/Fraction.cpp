@@ -3,53 +3,53 @@
 #include <iostream>
 using namespace std;
 
-Fraction::Fraction(int iTu, int iMau)
+Fraction::Fraction(int iNumerator, int iDenominator)
 {
-  this->iTu = iTu;
-  if (iMau != 0) this->iMau = iMau;
+  this->iNumerator = iNumerator;
+  if (iDenominator != 0) this->iDenominator = iDenominator;
 }
 
-void Fraction::Nhap()
+void Fraction::Input()
 {
   cout << "Nhap phan so:" << endl;
   cout << "Tu so: ";
-  cin >> iTu;
+  cin >> iNumerator;
   cout << "Mau so: ";
-  cin >> iMau;
+  cin >> iDenominator;
 }
 
-void Fraction::Xuat()
+void Fraction::Output()
 {
-  if (iMau < 0)
+  if (iDenominator < 0)
   {
-    iMau *= -1;
-    iTu *= -1;
+    iDenominator *= -1;
+    iNumerator *= -1;
   }
-  cout << iTu;
-  if (iMau != 1) cout << "/" << iMau;
+  cout << iNumerator;
+  if (iDenominator != 1) cout << "/" << iDenominator;
 }
 
-int Fraction::getTu() const
+int Fraction::getNumerator() const
 {
-  return iTu;
+  return iNumerator;
 }
 
-void Fraction::setTu(int iTu)
+void Fraction::setNumerator(int iNumerator)
 {
-  this->iTu = iTu;
+  this->iNumerator = iNumerator;
 }
 
-int Fraction::getMau() const
+int Fraction::getDenominator() const
 {
-  return iMau;
+  return iDenominator;
 }
 
-void Fraction::setMau(int iMau)
+void Fraction::setDenominator(int iDenominator)
 {
-  this->iMau = iMau;
+  this->iDenominator = iDenominator;
 }
 
-int Fraction::UCLN(int a, int b) const
+int Fraction::GCD(int a, int b) const
 {
   a = abs(a); b = abs(b);
   while (a*b > 0)
@@ -60,98 +60,98 @@ int Fraction::UCLN(int a, int b) const
   return (a + b);
 }
 
-int Fraction::BCNN(int a, int b) const
+int Fraction::LCM(int a, int b) const
 {
-  return(abs(a * b) / UCLN(a, b));
+  return(abs(a * b) / GCD(a, b));
 }
 
 Fraction::Fraction()
 {
-  iTu = 0;
-  iMau = 1;
+  iNumerator = 0;
+  iDenominator = 1;
 }
 
-Fraction::Fraction(int iTu)
+Fraction::Fraction(int iNumerator)
 {
-  this->iTu = iTu;
-  iMau = 1;
+  this->iNumerator = iNumerator;
+  iDenominator = 1;
 }
 
-Fraction Fraction::RutGon()
+Fraction Fraction::getSimplified()
 {
-  if (iMau < 0)
+  if (iDenominator < 0)
   {
-    iMau *= -1;
-    iTu *= -1;
+    iDenominator *= -1;
+    iNumerator *= -1;
   }
-  int x = UCLN(iTu, iMau);
-  if (x != 0) return Fraction(iTu / x, iMau / x);
+  int x = GCD(iNumerator, iDenominator);
+  if (x != 0) return Fraction(iNumerator / x, iDenominator / x);
 }
 
 Fraction Fraction::QuyDong(const Fraction &f) const
 {
-  int x = BCNN(iMau, f.iMau);
-  if (x != 0) return Fraction(iTu * (x / iMau), x);
+  int x = LCM(iDenominator, f.iDenominator);
+  if (x != 0) return Fraction(iNumerator * (x / iDenominator), x);
 }
 
-Fraction Fraction::Cong(const Fraction &f) const
+Fraction Fraction::Add(const Fraction &f) const
 {
-  return Fraction(iTu * f.iMau + iMau * f.iTu, iMau * f.iMau).RutGon();
+  return Fraction(iNumerator * f.iDenominator + iDenominator * f.iNumerator, iDenominator * f.iDenominator).getSimplified();
 }
 
-Fraction Fraction::Tru(const Fraction &f) const
+Fraction Fraction::Subtract(const Fraction &f) const
 {
-  return Fraction(iTu * f.iMau - iMau * f.iTu, iMau * f.iMau).RutGon();
+  return Fraction(iNumerator * f.iDenominator - iDenominator * f.iNumerator, iDenominator * f.iDenominator).getSimplified();
 }
 
-Fraction Fraction::Nhan(const Fraction &f) const
+Fraction Fraction::Multiply(const Fraction &f) const
 {
-  return Fraction(iTu * f.iTu, iMau * f.iMau).RutGon();
+  return Fraction(iNumerator * f.iNumerator, iDenominator * f.iDenominator).getSimplified();
 }
 
-Fraction Fraction::Chia(const Fraction &f) const
+Fraction Fraction::Divide(const Fraction &f) const
 {
-  return Fraction(iTu * f.iMau, iMau * f.iTu).RutGon();
+  return Fraction(iNumerator * f.iDenominator, iDenominator * f.iNumerator).getSimplified();
 }
 
-int Fraction::SoSanh(const Fraction &f) const
+int Fraction::CompareTo(const Fraction &f) const
 {
-  if (iTu * f.iMau > iMau * f.iTu) return 1;
-  if (iTu * f.iMau == iMau * f.iTu) return 0;
+  if (iNumerator * f.iDenominator > iDenominator * f.iNumerator) return 1;
+  if (iNumerator * f.iDenominator == iDenominator * f.iNumerator) return 0;
   return -1;
 }
 
-bool Fraction::ToiGian() const
+bool Fraction::IsSimplified() const
 {
   Fraction x = *this;
-  x = x.RutGon();
-  if (x.iMau == iMau) return true;
+  x = x.getSimplified();
+  if (x.iDenominator == iDenominator) return true;
   return false;
 }
 
 float Fraction::ToFloat() const
 {
-  return (float)iTu / (float)iMau;
+  return (float)iNumerator / (float)iDenominator;
 }
 
 Fraction Fraction::operator+(const Fraction & f2) const
 {
-  return this->Cong(f2);
+  return this->Add(f2);
 }
 
 Fraction Fraction::operator-(const Fraction & f2) const
 {
-  return this->Tru(f2);
+  return this->Subtract(f2);
 }
 
 Fraction Fraction::operator*(const Fraction & f2) const
 {
-  return this->Nhan(f2);
+  return this->Multiply(f2);
 }
 
 Fraction Fraction::operator/(const Fraction & f2) const
 {
-  return this->Chia(f2);
+  return this->Divide(f2);
 }
 
 Fraction Fraction::operator+(const int & i) const
@@ -176,25 +176,25 @@ Fraction Fraction::operator/(const int & i) const
 
 Fraction & Fraction::operator+=(const Fraction & f2)
 {
-  *this = this->Cong(f2);
+  *this = this->Add(f2);
   return *this;
 }
 
 Fraction & Fraction::operator-=(const Fraction & f2)
 {
-  *this = this->Tru(f2);
+  *this = this->Subtract(f2);
   return *this;
 }
 
 Fraction & Fraction::operator*=(const Fraction & f2)
 {
-  *this = this->Nhan(f2);
+  *this = this->Multiply(f2);
   return *this;
 }
 
 Fraction & Fraction::operator/=(const Fraction & f2)
 {
-  *this = this->Chia(f2);
+  *this = this->Divide(f2);
   return *this;
 }
 
@@ -250,21 +250,21 @@ Fraction & Fraction::operator--()
 
 bool Fraction::operator>(const Fraction & f2) const
 {
-  if (this->SoSanh(f2) == 1)
+  if (this->CompareTo(f2) == 1)
     return true;
   return false;
 }
 
 bool Fraction::operator<(const Fraction & f2) const
 {
-  if (this->SoSanh(f2) == -1)
+  if (this->CompareTo(f2) == -1)
     return true;
   return false;
 }
 
 bool Fraction::operator==(const Fraction & f2) const
 {
-  if (this->SoSanh(f2) == 0)
+  if (this->CompareTo(f2) == 0)
     return true;
   return false;
 }
@@ -285,7 +285,7 @@ bool Fraction::operator<=(const Fraction & f2) const
 
 bool Fraction::operator!=(const Fraction & f2) const
 {
-  if (this->SoSanh(f2) != 0)
+  if (this->CompareTo(f2) != 0)
     return true;
   return false;
 }
@@ -391,13 +391,13 @@ Fraction operator/(const int & i, const Fraction & f)
 
 std::ostream & operator<<(std::ostream & out, const Fraction & f)
 {
-  out << f.getTu();
-  if (f.getMau() != 1) out << "/" << f.getMau();
+  out << f.getNumerator();
+  if (f.getDenominator() != 1) out << "/" << f.getDenominator();
   return out;
 }
 
 std::istream & operator >> (std::istream & in, Fraction & f)
 {
-  f.Nhap();
+  f.Input();
   return in;
 }

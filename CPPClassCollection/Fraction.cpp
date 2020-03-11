@@ -11,10 +11,10 @@ Fraction::Fraction(int iNumerator, int iDenominator)
 
 void Fraction::Input()
 {
-  cout << "Nhap phan so:" << endl;
-  cout << "Tu so: ";
+  cout << "Inputting a new Fraction:" << endl;
+  cout << "Input numerator: ";
   cin >> iNumerator;
-  cout << "Mau so: ";
+  cout << "Input denominator: ";
   cin >> iDenominator;
 }
 

@@ -38,10 +38,10 @@ void Complex::Output()
 
 void Complex::Input()
 {
-  cout << "Nhap so phuc:" << endl;
-  cout << "So thuc:";
+  cout << "Inputting a complex number:" << endl;
+  cout << "Input Real number:";
   fReal.Input();
-  cout << "So ao: ";
+  cout << "Input Imaginary number: ";
   fImaginary.Input();
 }
 
@@ -97,24 +97,24 @@ float Complex::Modul() const
   return sqrtf(powf((float)fReal, 2.0f) + powf((float)fImaginary, 2.0f));
 }
 
-Complex Complex::operator+(const Complex & sp2) const
+Complex Complex::operator+(const Complex & c2) const
 {
-  return this->Add(sp2);
+  return this->Add(c2);
 }
 
-Complex Complex::operator-(const Complex & sp2) const
+Complex Complex::operator-(const Complex & c2) const
 {
-  return this->Subtract(sp2);
+  return this->Subtract(c2);
 }
 
-Complex Complex::operator*(const Complex & sp2) const
+Complex Complex::operator*(const Complex & c2) const
 {
-  return this->Multiply(sp2);
+  return this->Multiply(c2);
 }
 
-Complex Complex::operator/(const Complex & sp2) const
+Complex Complex::operator/(const Complex & c2) const
 {
-  return this->Divide(sp2);
+  return this->Divide(c2);
 }
 
 Complex Complex::operator+(const int & i) const
@@ -137,27 +137,27 @@ Complex Complex::operator/(const int & i) const
   return *this / Complex(i);
 }
 
-Complex & Complex::operator+=(const Complex & sp2)
+Complex & Complex::operator+=(const Complex & c2)
 {
-  *this = *this + sp2;
+  *this = *this + c2;
   return *this;
 }
 
-Complex & Complex::operator-=(const Complex & sp2)
+Complex & Complex::operator-=(const Complex & c2)
 {
-  *this = *this - sp2;
+  *this = *this - c2;
   return *this;
 }
 
-Complex & Complex::operator*=(const Complex & sp2)
+Complex & Complex::operator*=(const Complex & c2)
 {
-  *this = *this * sp2;
+  *this = *this * c2;
   return *this;
 }
 
-Complex & Complex::operator/=(const Complex & sp2)
+Complex & Complex::operator/=(const Complex & c2)
 {
-  *this = *this / sp2;
+  *this = *this / c2;
   return *this;
 }
 
@@ -211,34 +211,34 @@ Complex & Complex::operator--(int)
   return c;
 }
 
-bool Complex::operator>(const Complex & sp2) const
+bool Complex::operator>(const Complex & c2) const
 {
-  return Modul() > sp2.Modul();
+  return Modul() > c2.Modul();
 }
 
-bool Complex::operator<(const Complex & sp2) const
+bool Complex::operator<(const Complex & c2) const
 {
-  return Modul() < sp2.Modul();
+  return Modul() < c2.Modul();
 }
 
-bool Complex::operator==(const Complex & sp2) const
+bool Complex::operator==(const Complex & c2) const
 {
-  return Modul() == sp2.Modul();
+  return Modul() == c2.Modul();
 }
 
-bool Complex::operator>=(const Complex & sp2) const
+bool Complex::operator>=(const Complex & c2) const
 {
-  return Modul() >= sp2.Modul();
+  return Modul() >= c2.Modul();
 }
 
-bool Complex::operator<=(const Complex & sp2) const
+bool Complex::operator<=(const Complex & c2) const
 {
-  return Modul() <= sp2.Modul();
+  return Modul() <= c2.Modul();
 }
 
-bool Complex::operator!=(const Complex & sp2) const
+bool Complex::operator!=(const Complex & c2) const
 {
-  return Modul() != sp2.Modul();
+  return Modul() != c2.Modul();
 }
 
 bool Complex::operator>(const int & i) const

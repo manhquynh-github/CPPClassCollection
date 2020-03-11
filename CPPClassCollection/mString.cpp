@@ -50,7 +50,7 @@ void mString::setStr(char *pdata)
 
 void mString::Input()
 {
-  cout << "Nhap chuoi: ";
+  cout << "Inputting a new String: ";
   cin.getline(pData, iBuffer);
 }
 

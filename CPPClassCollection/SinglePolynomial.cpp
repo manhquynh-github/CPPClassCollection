@@ -85,13 +85,13 @@ SinglePolynomial SinglePolynomial::Arrange() const
 
 void SinglePolynomial::Input()
 {
-  cout << "Nhap so phan tu da thuc: ";
+  cout << "Input Polynomial's element count: ";
   cin >> iElementCount;
   for (int i = 0; i < iElementCount; i++)
   {
-    printf("He so %d: ", i + 1);
+    printf("Input coefficient #%d: ", i + 1);
     cin >> fCoefficients[i];
-    printf("So mu [%d]: ", i + 1);
+    printf("Input exponent #[%d]: ", i + 1);
     cin >> iExponents[i];
   }
   this->Arrange();

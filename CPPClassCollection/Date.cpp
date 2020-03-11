@@ -196,7 +196,7 @@ std::istream & operator >> (std::istream & in, Date & d)
 {
   do
   {
-    cout << "\nNhap ngay thang nam hop le:";
+    cout << "\nInputting a valid day, month, and year:";
     cin >> d.iDay >> d.iMonth >> d.iYear;
   } while (d.IsValid(d.iDay, d.iMonth, d.iYear) == false);
   return in;
